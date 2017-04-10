@@ -5,7 +5,7 @@ build
 gradle
 gradlew
 gradlew.bat
-
+target
 *.class
 
 # Mobile Tools for Java (J2ME)
