@@ -15,7 +15,6 @@ public class YRSLPresenter implements Initializable {
 	private View main;
 
 
-	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 	}

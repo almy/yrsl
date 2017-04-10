@@ -5,7 +5,6 @@ import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.Swatch;
 import com.myftiu.yrsl.view.YRSLView;
 import javafx.scene.Scene;
-
 import java.util.function.Supplier;
 
 public class Main extends MobileApplication {
