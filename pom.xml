@@ -40,7 +40,6 @@
     </dependency>
 
 
-
     <dependency>
       <groupId>com.gluonhq</groupId>
       <artifactId>charm-down-plugin-display</artifactId>

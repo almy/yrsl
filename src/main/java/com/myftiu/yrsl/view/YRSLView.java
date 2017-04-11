@@ -1,10 +1,29 @@
 package com.myftiu.yrsl.view;
 
 
-import com.airhacks.afterburner.views.FXMLView;
 import com.gluonhq.charm.glisten.mvc.View;
-import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 
-public class YRSLView extends FXMLView {
+import java.io.IOException;
 
+public class YRSLView  {
+
+   private final String name;
+
+   public YRSLView(String name) {
+      this.name = name;
+   }
+
+   public View getView() {
+      try {
+         View view = FXMLLoader.load(YRSLView.class.getClassLoader().getResource("YRSL.fxml"));
+         view.setName(name);
+         return view;
+      } catch (IOException e) {
+         System.out.println("IOException: " + e);
+         return new View(name);
+      }
+   }
 }
+
+
