@@ -1,4 +1,4 @@
-package com.myftiu.jrasp.service.yr;
+package com.myftiu.yrsl.service.yr;
 
 import org.glassfish.jersey.client.ClientConfig;
 import org.w3c.dom.Document;
@@ -19,7 +19,7 @@ import java.io.ByteArrayInputStream;
  *
  * @author Samuel Nilsson
  */
-public class YRClient {
+public class YrClient {
 
    private static String YR_API_URL = "http://www.yr.no/place/Sweden/Stockholm/Stockholm/forecast.xml";
 

@@ -1,8 +1,9 @@
-package com.myftiu.jrasp.service.yr;
+package com.myftiu.yrsl.service.yr;
 
-import com.myftiu.jrasp.HelloController;
-import com.myftiu.jrasp.model.yr.Time;
-import com.myftiu.jrasp.model.yr.Weatherdata;
+
+import com.myftiu.yrsl.model.yr.Time;
+import com.myftiu.yrsl.model.yr.Weatherdata;
+import com.myftiu.yrsl.presenter.HelloController;
 import javafx.application.Platform;
 import javafx.concurrent.ScheduledService;
 import javafx.concurrent.Task;
@@ -102,7 +103,7 @@ public class YRService extends ScheduledService<Void> {
 
 
     private Weatherdata findData() throws IOException, XMLStreamException, JAXBException {
-        YRClient yrClient = new YRClient();
+        YrClient yrClient = new YrClient();
         Document doc = yrClient.getLocationForecast();
         JAXBContext jaxbContext = JAXBContext.newInstance(Weatherdata.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();

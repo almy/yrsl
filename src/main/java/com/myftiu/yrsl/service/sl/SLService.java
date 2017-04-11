@@ -1,9 +1,9 @@
-package com.myftiu.jrasp.service.sl;
+package com.myftiu.yrsl.service.sl;
 
 import com.google.gson.Gson;
-import com.myftiu.jrasp.HelloController;
-import com.myftiu.jrasp.model.sl.Departures;
-import com.myftiu.jrasp.model.sl.SLInfo;
+import com.myftiu.yrsl.model.sl.Departures;
+import com.myftiu.yrsl.model.sl.SLInfo;
+import com.myftiu.yrsl.presenter.HelloController;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
