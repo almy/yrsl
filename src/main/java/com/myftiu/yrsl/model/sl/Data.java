@@ -1,11 +1,12 @@
 
-package com.myftiu.jrasp.model.sl;
+package com.myftiu.yrsl.model.sl;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.myftiu.yrsl.model.sl.BusGroup;
 
 @Generated("org.jsonschema2pojo")
 public class Data {

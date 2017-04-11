@@ -6,7 +6,7 @@
 //
 
 
-package com.myftiu.jrasp.model.yr;
+package com.myftiu.yrsl.model.yr;
 
 import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;

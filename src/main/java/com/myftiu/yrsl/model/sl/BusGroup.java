@@ -1,5 +1,4 @@
-
-package com.myftiu.jrasp.model.sl;
+package com.myftiu.yrsl.model.sl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public class BusGroup {
     private String Title;
     @SerializedName("Departures")
     @Expose
-    private List<com.myftiu.jrasp.model.sl.Departures> Departures = new ArrayList<com.myftiu.jrasp.model.sl.Departures>();
+    private List<Departures> Departures = new ArrayList<>();
     @SerializedName("CurrentServerTime")
     @Expose
     private String CurrentServerTime;
@@ -82,7 +81,7 @@ public class BusGroup {
      * @return
      *     The Departures
      */
-    public List<com.myftiu.jrasp.model.sl.Departures> getDepartures() {
+    public List<Departures> getDepartures() {
         return Departures;
     }
 
@@ -91,11 +90,11 @@ public class BusGroup {
      * @param Departures
      *     The Departures
      */
-    public void setDepartures(List<com.myftiu.jrasp.model.sl.Departures> Departures) {
+    public void setDepartures(List<Departures> Departures) {
         this.Departures = Departures;
     }
 
-    public BusGroup withDepartures(List<com.myftiu.jrasp.model.sl.Departures> Departures) {
+    public BusGroup withDepartures(List<Departures> Departures) {
         this.Departures = Departures;
         return this;
     }

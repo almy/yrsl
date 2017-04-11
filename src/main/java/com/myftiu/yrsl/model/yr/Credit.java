@@ -6,7 +6,8 @@
 //
 
 
-package com.myftiu.jrasp.model.yr;
+package com.myftiu.yrsl.model.yr;
+
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

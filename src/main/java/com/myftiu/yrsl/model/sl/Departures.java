@@ -1,5 +1,5 @@
 
-package com.myftiu.jrasp.model.sl;
+package com.myftiu.yrsl.model.sl;
 
 import java.util.ArrayList;
 import java.util.List;

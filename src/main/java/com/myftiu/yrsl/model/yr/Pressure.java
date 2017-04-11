@@ -4,9 +4,8 @@
 // Any modifications to this file will be lost upon recompilation of the source schema. 
 // Generated on: 2015.12.25 at 01:40:59 AM CET 
 //
+package com.myftiu.yrsl.model.yr;
 
-
-package com.myftiu.jrasp.model.yr;
 
 import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;

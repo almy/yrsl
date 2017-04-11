@@ -1,9 +1,9 @@
-
-package com.myftiu.jrasp.model.sl;
+package com.myftiu.yrsl.model.sl;
 
 import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.myftiu.yrsl.model.sl.Data;
 
 public class SLInfo {
 
