@@ -10,7 +10,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Component
 public class HelloController
 {
 

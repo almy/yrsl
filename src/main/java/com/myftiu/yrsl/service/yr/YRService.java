@@ -16,8 +16,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 
+import javax.inject.Inject;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -35,12 +38,15 @@ import java.util.concurrent.BlockingQueue;
 /**
  * @author by ali myftiu on 28/12/15.
  */
+
+@Service
 public class YRService extends ScheduledService<Void> {
 
-    private final FXMLLoader loader;
+    FXMLLoader loader;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(YRService.class);
 
+    @Autowired
     public YRService(FXMLLoader loader) {
         this.loader = loader;
     }

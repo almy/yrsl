@@ -14,7 +14,10 @@ import javafx.scene.control.ListView;
 import org.glassfish.jersey.client.ClientConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.inject.Inject;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
@@ -27,15 +30,19 @@ import java.util.stream.Collectors;
 /**
  * @author by ali myftiu on 22/12/15.
  */
+
+@Service
 public class SLService extends ScheduledService<Void> {
 
     private BlockingQueue<Departures> departuresBlockingQueue;
     private static final String SL_URL = "http://sl.se/api/sv/RealTime/GetDepartures/1302";
     private static final String SOFIA = "Sofia";
-    private final FXMLLoader loader;
+    @Inject FXMLLoader loader;
+    @Inject HelloController helloController;
     private static final Logger LOGGER = LoggerFactory.getLogger(SLService.class);
 
 
+    @Autowired
     public SLService(BlockingQueue<Departures> departuresBlockingQueue, FXMLLoader loader) {
         this.departuresBlockingQueue = departuresBlockingQueue;
         this.loader = loader;
@@ -62,18 +69,14 @@ public class SLService extends ScheduledService<Void> {
 
     private void updateText() {
         LOGGER.info("Calling runnable of SLService");
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                LOGGER.info("Updating new timetable of the busses");
-                final HelloController helloController = loader.getController();
-                final ListView busTable = helloController.getBusTable();
-                final ObservableList<String> slBuses = FXCollections.observableArrayList();
-                for (Departures departure : departuresBlockingQueue) {
-                    slBuses.add(String.format("Autobuzi %s:  %s", departure.getLineNumber(), departure.getDisplayTime()));
-                }
-                busTable.setItems(slBuses);
+        Platform.runLater(() -> {
+            LOGGER.info("Updating new timetable of the busses");
+            final ListView busTable = helloController.getBusTable();
+            final ObservableList<String> slBuses = FXCollections.observableArrayList();
+            for (Departures departure : departuresBlockingQueue) {
+                slBuses.add(String.format("Autobuzi %s:  %s", departure.getLineNumber(), departure.getDisplayTime()));
             }
+            busTable.setItems(slBuses);
         });
 
     }
