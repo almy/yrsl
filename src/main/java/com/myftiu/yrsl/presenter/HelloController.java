@@ -2,6 +2,7 @@ package com.myftiu.yrsl.presenter;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -13,8 +14,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 @Component
-public class HelloController
+public class HelloController  implements Initializable
 {
 
     @FXML private Text cityId;
@@ -25,9 +29,16 @@ public class HelloController
     @FXML private ListView busTable;
     @FXML private javafx.scene.control.Button closeButton;
 
+
     public HelloController() {
         setup();
     }
+
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+
 
     private void setup() {
         //setting table layout

@@ -41,11 +41,12 @@ public class SLService extends ScheduledService<Void> {
     @Inject HelloController helloController;
     private static final Logger LOGGER = LoggerFactory.getLogger(SLService.class);
 
+    public SLService() {
+    }
 
-    @Autowired
-    public SLService(BlockingQueue<Departures> departuresBlockingQueue, FXMLLoader loader) {
+    public SLService(BlockingQueue<Departures> departuresBlockingQueue, HelloController helloController) {
         this.departuresBlockingQueue = departuresBlockingQueue;
-        this.loader = loader;
+        this.helloController = helloController;
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.gluonhq.charm.glisten.visual.Swatch;
 import com.gluonhq.connect.provider.RestClient;
 import com.gluonhq.ignite.spring.SpringContext;
 import com.myftiu.yrsl.model.sl.Departures;
+import com.myftiu.yrsl.presenter.HelloController;
 import com.myftiu.yrsl.service.YRSLService;
 import com.myftiu.yrsl.service.sl.SLService;
 import com.myftiu.yrsl.service.yr.YRService;
@@ -37,6 +38,7 @@ public class Main extends MobileApplication {
     private SpringContext context = new SpringContext(this, () -> Arrays.asList(Main.class.getPackage().getName()));
     @Inject YRSLService yrslService;
     @Inject FXMLLoader fxmlLoader;
+    @Inject HelloController helloController;
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
     private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     private BlockingQueue<Departures> departuresBlockingQueue = new LinkedBlockingQueue<>();
@@ -70,7 +72,7 @@ public class Main extends MobileApplication {
         yrService.setPeriod(Duration.hours(24));
         yrService.start();
 
-        slService = new SLService(departuresBlockingQueue, fxmlLoader);
+        slService = new SLService(departuresBlockingQueue, helloController);
         slService.setExecutor(executorService);
         slService.setPeriod(Duration.minutes(1));
         slService.start();
