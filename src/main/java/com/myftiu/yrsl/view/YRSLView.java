@@ -16,9 +16,8 @@ public class YRSLView  {
 
    public View getView() {
       try {
-         View view = FXMLLoader.load(YRSLView.class.getClassLoader().getResource("fxml/hello.fxml"));
+         View view = FXMLLoader.load(YRSLView.class.getClassLoader().getResource("fxml/yrsl.fxml"));
          view.setName(name);
-
          return view;
       } catch (IOException e) {
          System.out.println("IOException: " + e);

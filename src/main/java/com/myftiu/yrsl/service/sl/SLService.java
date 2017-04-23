@@ -1,5 +1,6 @@
 package com.myftiu.yrsl.service.sl;
 
+import com.gluonhq.charm.glisten.control.CharmListView;
 import com.google.gson.Gson;
 import com.myftiu.yrsl.model.sl.Departures;
 import com.myftiu.yrsl.model.sl.SLInfo;
@@ -72,7 +73,7 @@ public class SLService extends ScheduledService<Void> {
         LOGGER.info("Calling runnable of SLService");
         Platform.runLater(() -> {
             LOGGER.info("Updating new timetable of the busses");
-            final ListView busTable = helloController.getBusTable();
+            final CharmListView busTable = helloController.getBusTable();
             final ObservableList<String> slBuses = FXCollections.observableArrayList();
             for (Departures departure : departuresBlockingQueue) {
                 slBuses.add(String.format("Autobuzi %s:  %s", departure.getLineNumber(), departure.getDisplayTime()));

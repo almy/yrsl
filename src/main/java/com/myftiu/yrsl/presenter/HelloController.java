@@ -1,12 +1,11 @@
 package com.myftiu.yrsl.presenter;
 
+import com.gluonhq.charm.glisten.control.CharmListView;
+import com.gluonhq.charm.glisten.mvc.View;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import org.slf4j.Logger;
@@ -24,11 +23,10 @@ public class HelloController  implements Initializable
     @FXML private Text cityId;
     @FXML private Text sunText;
     @FXML private GridPane forecast;
-
-    @FXML private ListView yrTable;
-    @FXML private ListView busTable;
-    @FXML private javafx.scene.control.Button closeButton;
-
+    @FXML private CharmListView yrTable;
+    @FXML private CharmListView busTable;
+    @FXML private Button closeButton;
+    @FXML private View appView;
 
     public HelloController() {
         setup();
@@ -51,19 +49,28 @@ public class HelloController  implements Initializable
         System.exit(0);
     }
 
+    public CharmListView getYrTable() {
+        return yrTable;
+    }
 
-    public ListView getBusTable() {
+    public void setYrTable(CharmListView yrTable) {
+        this.yrTable = yrTable;
+    }
+
+    public CharmListView getBusTable() {
         return busTable;
     }
 
-    public void setBusTable(ListView busTable) {
+    public void setBusTable(CharmListView busTable) {
         this.busTable = busTable;
     }
 
-    public ListView getYrTable() {return yrTable;
+    public Button getCloseButton() {
+        return closeButton;
     }
 
-    public void setYrTable(ListView yrTable) {this.yrTable = yrTable;
+    public void setCloseButton(Button closeButton) {
+        this.closeButton = closeButton;
     }
 
     public Text getCityId() {

@@ -7,19 +7,20 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.GridPane?>
+<?import com.gluonhq.charm.glisten.layout.MobileLayoutPane?>
 
 
-<View id="rootPane" styleClass="main-panel" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+<View fx:id="rootPane" styleClass="main-panel"
+      xmlns="http://javafx.com/javafx/8.0.112"
+      xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.myftiu.yrsl.presenter.HelloController">
-   <children>
-    <Pane fx:id="slPane" maxWidth="150" prefWidth="150" styleClass="sl-panel" GridPane.columnIndex="0" GridPane.rowIndex="0">
+    <MobileLayoutPane fx:id="slPane" maxWidth="150" prefWidth="150" styleClass="sl-panel" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <ListView fx:id="busTable" maxWidth="150" prefWidth="150" styleClass="slTable"/>
-    </Pane>
-    <Pane fx:id="yrPane" maxWidth="170" prefWidth="170" styleClass="yr-panel" GridPane.columnIndex="1" GridPane.rowIndex="0">
+    </MobileLayoutPane>
+    <MobileLayoutPane fx:id="yrPane" maxWidth="170" prefWidth="170" styleClass="yr-panel" GridPane.columnIndex="1" GridPane.rowIndex="0">
         <Text fx:id="cityId" layoutX="9.0" layoutY="19.0" styleClass="cityStyle" />
         <Text fx:id="sunText" layoutX="9.0" layoutY="43.0" styleClass="sunStyle" />
         <GridPane fx:id="forecast" layoutX="9.0" layoutY="53" styleClass="forecastStyle" />
         <Button fx:id="closeButton" layoutX="120" layoutY="200" onAction="#closeButtonAction" text="Dalja">Dalja</Button>
-    </Pane>
-   </children>
+    </MobileLayoutPane>
 </View>
