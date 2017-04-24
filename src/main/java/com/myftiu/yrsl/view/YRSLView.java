@@ -8,13 +8,14 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-public class YRSLView  {
+public class YRSLView extends View {
 
    private final String name;
    private View view;
    private FXMLLoader fxmlLoader;
 
    public YRSLView(String name) {
+      super(name);
       this.fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/yrsl.fxml"));
       this.name = name;
    }

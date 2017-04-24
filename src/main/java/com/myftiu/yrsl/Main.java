@@ -1,6 +1,9 @@
 package com.myftiu.yrsl;
 
 import com.gluonhq.charm.glisten.application.MobileApplication;
+import com.gluonhq.charm.glisten.control.AppBar;
+import com.gluonhq.charm.glisten.mvc.View;
+import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.gluonhq.charm.glisten.visual.Swatch;
 import com.gluonhq.ignite.spring.SpringContext;
 import com.myftiu.yrsl.model.sl.Departures;
@@ -10,6 +13,7 @@ import com.myftiu.yrsl.service.yr.YRService;
 import com.myftiu.yrsl.view.YRSLView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.util.Duration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +41,6 @@ public class Main extends MobileApplication {
     private SLService slService;
     private YRService yrService;
     @Inject FXMLLoader fxmlLoader_inj;
-    private static String YR_API_URL = "http://www.yr.no/place/Sweden/Stockholm/Stockholm/forecast.xml";
     private YRSLView yrslView;
 
     final Lock lock = new ReentrantLock();
@@ -47,13 +50,29 @@ public class Main extends MobileApplication {
     @Override
     public void init() throws IOException {
         context.init();
-        yrslView = new YRSLView(BASIC_VIEW);
-        addViewFactory(BASIC_VIEW, () -> yrslView.getView());
+        yrslView = new YRSLView(HOME_VIEW);
+        addViewFactory(HOME_VIEW, () -> {
+            final View view = yrslView.getView();
+            view.showingProperty().addListener((obs, oldValue, newValue) -> {
+                AppBar appBar = MobileApplication.getInstance().getAppBar();
+                appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> System.out.println("nav icon")));
+                appBar.setTitleText("Next Departure");
+                appBar.getActionItems().addAll(
+                   MaterialDesignIcon.SEARCH.button(e -> System.out.println("search")),
+                   MaterialDesignIcon.FAVORITE.button(e -> System.out.println("fav")));
+                appBar.getMenuItems().addAll(new MenuItem("Settings"));
+            });
+            return view;
+        });
     }
 
     @Override
     public void postInit(Scene scene) {
         Swatch.BLUE.assignTo(scene);
+        yrslView.showingProperty().addListener((obs, oldValue, newValue) -> {
+            AppBar appBar = MobileApplication.getInstance().getAppBar();
+            appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> System.out.println("nav icon")));
+        });
         try {
             startWorkers();
         } catch (IOException e) {
