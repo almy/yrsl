@@ -39,16 +39,16 @@ import java.util.concurrent.BlockingQueue;
  * @author by ali myftiu on 28/12/15.
  */
 
-@Service
+
 public class YRService extends ScheduledService<Void> {
 
-    FXMLLoader loader;
+    HelloController helloController;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(YRService.class);
 
-    @Autowired
-    public YRService(FXMLLoader loader) {
-        this.loader = loader;
+
+    public YRService(HelloController helloController) {
+        this.helloController = helloController;
     }
 
     @Override
@@ -57,7 +57,6 @@ public class YRService extends ScheduledService<Void> {
             @Override
             protected Void call() throws Exception {
                 final Weatherdata weatherdata = findData();
-                final HelloController helloController = loader.getController();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
                 LocalDateTime sunrise = LocalDateTime.parse(weatherdata.getSun().getRise(), formatter);
                 LocalDateTime sunset = LocalDateTime.parse(weatherdata.getSun().getSet(), formatter);
@@ -66,9 +65,7 @@ public class YRService extends ScheduledService<Void> {
                 helloController.getSunText().setText(sunrise.getHour() + ":" + sunrise.getMinute() + " - " + sunset.getHour() + ":" + sunrise.getMinute() );
                 final List<Time> dailyForecast = weatherdata.getForecast().getTabular().getTime().subList(0, 4);
                 final GridPane forecastGrid = helloController.getForecast();
-
                 updateText(dailyForecast, forecastGrid);
-
                 return null;
             }
         };

@@ -32,18 +32,15 @@ import java.util.stream.Collectors;
  * @author by ali myftiu on 22/12/15.
  */
 
-@Service
+
 public class SLService extends ScheduledService<Void> {
 
     private BlockingQueue<Departures> departuresBlockingQueue;
     private static final String SL_URL = "http://sl.se/api/sv/RealTime/GetDepartures/1302";
     private static final String SOFIA = "Sofia";
-    @Inject FXMLLoader loader;
-    @Inject HelloController helloController;
+    private HelloController helloController;
     private static final Logger LOGGER = LoggerFactory.getLogger(SLService.class);
 
-    public SLService() {
-    }
 
     public SLService(BlockingQueue<Departures> departuresBlockingQueue, HelloController helloController) {
         this.departuresBlockingQueue = departuresBlockingQueue;
@@ -80,7 +77,6 @@ public class SLService extends ScheduledService<Void> {
             }
             busTable.setItems(slBuses);
         });
-
     }
 
     private List<Departures> fetchDepatures() throws IOException {

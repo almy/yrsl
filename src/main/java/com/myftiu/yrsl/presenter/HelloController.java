@@ -23,7 +23,6 @@ public class HelloController  implements Initializable
     @FXML private Text cityId;
     @FXML private Text sunText;
     @FXML private GridPane forecast;
-    @FXML private CharmListView yrTable;
     @FXML private CharmListView busTable;
     @FXML private Button closeButton;
     @FXML private View appView;
@@ -33,7 +32,7 @@ public class HelloController  implements Initializable
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-
+        appView.getName();
     }
 
 
@@ -49,13 +48,6 @@ public class HelloController  implements Initializable
         System.exit(0);
     }
 
-    public CharmListView getYrTable() {
-        return yrTable;
-    }
-
-    public void setYrTable(CharmListView yrTable) {
-        this.yrTable = yrTable;
-    }
 
     public CharmListView getBusTable() {
         return busTable;
